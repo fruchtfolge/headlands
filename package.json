@@ -1,0 +1,46 @@
+{
+  "name": "headlands",
+  "version": "1.0.0",
+  "description": "Calculate headlands from GeoJSON polygons",
+  "main": "dist/headland.cjs.js",
+  "module": "dist/headland.esm.js",
+  "browser": "dist/headland.min.js",
+  "license": "MIT",
+  "author": {
+    "name": "Christoph Pahmeyer",
+    "email": "christoph.pahmeyer@ilr.uni-bonn.de",
+    "url": "https://github.com/chrispahm"
+  },
+  "dependencies": {
+    "@turf/turf": "^5.1.6",
+    "polygon-clipping": "^0.14.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.1",
+    "rollup": "^2.13.1",
+    "rollup-plugin-terser": "^6.1.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "node test/test.js",
+    "serve": "npx serve",
+    "pretest": "npm run build"
+  },
+  "keywords": [
+    "agriculture,",
+    "headland,",
+    "landwirtschaft,",
+    "vorgewende,",
+    "plot"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fruchtfolge/headlands.git"
+  },
+  "homepage": "https://github.com/chrispahm/vorgewende",
+  "bugs": {
+    "url": "https://github.com/chrispahm/vorgewende/issues"
+  }
+}
