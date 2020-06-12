@@ -25,7 +25,7 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "test": "node test/test.js",
-    "serve": "npx serve",
+    "serve": "npx serve docs",
     "pretest": "npm run build"
   },
   "keywords": [

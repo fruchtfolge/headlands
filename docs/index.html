@@ -374,7 +374,7 @@
       let random = Math.floor(Math.random() * 79)
       // do not consider some examples for now, as they are not 'real' arable fields
       // or just too small 
-      const ignoredFields = [33]
+      const ignoredFields = [33,52,61]
       if (ignoredFields.indexOf(random) > -1) random = 0
       number = no ? no : random
       polygon = examplePlots[number]
