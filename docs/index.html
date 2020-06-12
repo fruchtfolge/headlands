@@ -206,13 +206,15 @@
       }
     });
     map.addControl(Draw)
-
+    let end
     // setup web worker instance
     const worker = new Worker('./assets/worker.js')
     worker.addEventListener('message', e => {
       if (e.data === 'started') { 
-        console.log('started');
+        return
       } else {
+        end = new Date()
+        console.log(`Took ${end - start} ms to generate headlands`);
         drawLayer(e.data.polygons,e.data.debug)
       }
     }, false);
@@ -347,7 +349,9 @@
 
   }
   
+  let start
   const addLayer = debounce(() => {
+    start = new Date()
     worker.postMessage({
       polygon, 
       maxAngle: Number(turnAngle.value),

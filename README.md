@@ -7,7 +7,22 @@ Works in NodeJS and in the browser.
 
 ![demo image](https://user-images.githubusercontent.com/20703207/84497032-4fb88080-acae-11ea-852f-ec9583dd9943.png)
 ## Install
-The script is still in beta phase, to install simply clone this repo.
+The script is still in beta phase. To install, clone this repo or grab any of the bundled files suitable for your needs from the `dist` folder.
+
+This module relies on [@turf](https://github.com/Turfjs/turf), which you need to include *before* using this module when running in a browser:
+```html
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+```
+
+## How fast is it?
+For an average plot (as per the examples in this repo), creating headlands
+takes approx. **60-150ms** (measured on a MBP early 2015).
+
+*Not good, not terrible*
+
+When running in a browser, it is advised to run the script inside a **web worker**
+in order to avoid unnecessary blocking of the main thread. See the contents of the
+`docs` folder for a working example.
 
 ## Usage
 

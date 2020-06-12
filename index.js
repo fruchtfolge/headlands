@@ -266,14 +266,12 @@ function checkIntersections(polys) {
       // if the intersection area is within 99% of the currentHeadlands area, we throw it out
       const intersectionCoords = polygonClipping.intersection(curHeadland.geometry.coordinates,unified)
       if (!intersectionCoords) {
-        console.log('no intersection');
         continue
       }
       const intersectionPoly = turf.multiPolygon(intersectionCoords)
       const intersectionArea = turf.area(intersectionPoly)
       const curHeadlandArea = turf.area(curHeadland)
       if (intersectionArea > curHeadlandArea * 0.99) {
-        console.log(intersectionArea,curHeadlandArea, i);
         continue
       }
       curHeadland.properties.area = curHeadlandArea
