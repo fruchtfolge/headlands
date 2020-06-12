@@ -5,13 +5,10 @@
   <meta charset="utf-8">
   <title>Headlands</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚜</text></svg>">
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script> -->
-  <!-- <script src="https://unpkg.com/jsts/dist/jsts.min.js"></script> -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js'></script>
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css' type='text/css' />
-  <!-- <script src="assets/headland.min.js"></script> -->
   <script src="assets/examples.js"></script>
   <style>
       * {
@@ -318,7 +315,7 @@
         */
       });
       
-      /*
+      ///*
       debug.forEach((point,i) => {
         const el = document.createElement('div');
         el.className = 'marker';
@@ -342,7 +339,7 @@
           .addTo(map);
           markers.push(marker1)
       })
-      */
+      //*/
       function randColor(colorNum, colors){
           if (colors < 1) colors = 1; // defaults to one color - avoid divide by zero
           return "hsl(" + (colorNum * (360 / colors) % 360) + ",100%,50%)";
