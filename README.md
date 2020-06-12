@@ -54,7 +54,7 @@ const fs = require('fs')
 
 let plot = fs.readFileSync('somePlotPolygonFeature.geojson')
 let { polygons, debug } = headlands.polygons(plot, {width: 15, maxAngle: 40, debug: true}) // contains an array of all potential headlands as GeoJSON polygon features
-
+```
 #### Returns
 An array of GeoJSON polygon features representing each headland.
 
