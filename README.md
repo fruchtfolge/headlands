@@ -1,54 +1,59 @@
-# vorgewende
+# headlands
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-Modul zur automatischen Berechnung von Vorgewenden aus GeoJSON Teilflaechen / Module for automatic headland calculation from GeoJSON plots.
+headlands is a JavaScript module for creating agricultural [headlands](https://en.wikipedia.org/wiki/Headland_(agriculture)) from GeoJSON plots.
 Works in NodeJS and in the browser.
 
+![demo image](https://user-images.githubusercontent.com/20703207/84497032-4fb88080-acae-11ea-852f-ec9583dd9943.png)
 ## Install
 The script is still in beta phase, to install simply clone this repo.
-In future:
-Use [npm](https://npmjs.com/) to install.
-
-```sh
-npm install vorgewende --save
-```
 
 ## Usage
 
-#### [Click here for an online demo](https://chrispahm.github.io/vorgewende)
+#### [Click here for an online demo](https://fruchtfolge.github.io/headlands/?field=60)
 
-The script (will) contain the following API methods:
-### ```lineString(polygon, (angle), (minDistance))```
+The module exports two methods:
+### ```lineString(polygon, { (maxAngle: 30), (minCoordDistance: 10), (debug: false)})```
 
 where
 
-```polygon``` a GeoJSON feature (GeoJSON geometries need to be converted to features first)
+```polygon``` a GeoJSON polygon feature
 
-```angle``` the maximal allowed turning angle in degrees, defaults to 30 deg
+```options.maxAngle``` the maximal allowed turning angle in degrees, defaults to 30 deg
 
-```minDistance``` the minimum distance in meters between two coordinates used for angle comparison, defaults to 10 m.
+```options.minCoordDistance``` the minimum distance between two coordinates (in meters) used for angle comparison, defaults to 10m.
 
 #### Example
 ```js
-const vorgewende = require('vorgewende')
+const headlands = require('headlands')
 const fs = require('fs')
 
 let plot = fs.readFileSync('somePlotPolygonFeature.geojson')
-let headlands = vorgewende.lineString(plot) // will contain all headlands as GeoJSON lineString features
-
+let { lineStrings } = headlands.lineString(plot) // contains an array of all potential headlands as GeoJSON linestring features
 ```
 
 #### Returns
 An array of GeoJSON lineString features representing each headland.
 
-### ```polygons(polygon, headlandWidth, (angle), (minDistance))```
+### ```polygons(polygon, { (maxAngle: 30), (minCoordDistance: 10), (width: 12), (debug: false)})```
 
 where
+```polygon``` a GeoJSON polygon feature
 
-```headlandWidth``` Width of each headland in meters, typically equal to (half) the working width of the sprayer used.
+```options.maxAngle``` the maximal allowed turning angle in degrees, defaults to 30 deg
 
-else see ```lineString``` parameter description.
+```options.minCoordDistance``` the minimum distance between two coordinates (in meters) used for angle comparison, defaults to 10m.
+
+```options.width``` Width of each headland in meters, typically equal to (half) the working width of the sprayer used. Defaults to 12m.
+
+#### Example
+```js
+const headlands = require('headlands')
+const fs = require('fs')
+
+let plot = fs.readFileSync('somePlotPolygonFeature.geojson')
+let { polygons, debug } = headlands.polygons(plot, {width: 15, maxAngle: 40, debug: true}) // contains an array of all potential headlands as GeoJSON polygon features
 
 #### Returns
 An array of GeoJSON polygon features representing each headland.
@@ -56,4 +61,4 @@ An array of GeoJSON polygon features representing each headland.
 
 ## License
 
-MIT, see [LICENSE.md](http://github.com/Toffi-123/vorgewende/blob/master/LICENSE.md) for details.
+MIT

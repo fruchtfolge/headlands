@@ -1,7 +1,7 @@
 {
   "name": "headlands",
   "version": "1.0.0",
-  "description": "Calculate headlands from GeoJSON polygons",
+  "description": "Calculate agricultural headlands from GeoJSON polygons",
   "main": "dist/headland.cjs.js",
   "module": "dist/headland.esm.js",
   "browser": "dist/headland.min.js",
