@@ -195,8 +195,8 @@ const headland = {
     }
     const lineStringFeatures = lineStrings.map(ls => turf.lineString(ls));
     return {
-      lineStrings: lineStringFeatures,
-      holes: holes,
+      lineStrings: turf.featureCollection(lineStringFeatures),
+      holes: turf.featureCollection(holes),
       debug: debugData
     }
   },
@@ -217,7 +217,7 @@ const headland = {
     
     let polygons;
     try {
-      polygons = lineStrings.map(ls => {
+      polygons = lineStrings.features.map(ls => {
         // add additional point to start
         ls = extendLineString(ls, options.width);
         // and to the end of the linestring
@@ -241,8 +241,8 @@ const headland = {
       throw new Error('Failed to create headland polygons. This is likely to occur when the input polygon is too small: ' + e)
     }
     
-    if (holes && holes.length) {
-      holes.forEach(hole => {
+    if (holes && holes.features && holes.features.length) {
+      holes.features.forEach(hole => {
         let headland = turf.buffer(hole, options.width / 1000);
         headland = turf.difference(headland, hole);
         polygons.push(headland);
@@ -250,7 +250,7 @@ const headland = {
     }
     polygons = checkIntersections(polygons);
     return {
-      polygons,
+      polygons: turf.featureCollection(polygons),
       debug
     }
   }

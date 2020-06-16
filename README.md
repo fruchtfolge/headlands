@@ -49,7 +49,17 @@ let { lineStrings } = headlands.lineString(plot) // contains an array of all pot
 ```
 
 #### Returns
-An array of GeoJSON lineString features representing each headland.
+An object of the following form:
+```js
+{
+  lineStrings: {
+    // a GeoJSON feature collection of lineString features representing each headland
+  },
+  debug: [
+    // an array of GeoJSON points containing debug information (solely for development of this algorithm)
+  ]
+}
+```
 
 ### ```polygons(polygon, { (maxAngle: 30), (minCoordDistance: 10), (width: 12), (debug: false)})```
 
@@ -71,9 +81,17 @@ let plot = fs.readFileSync('somePlotPolygonFeature.geojson')
 let { polygons, debug } = headlands.polygons(plot, {width: 15, maxAngle: 40, debug: true}) // contains an array of all potential headlands as GeoJSON polygon features
 ```
 #### Returns
-An array of GeoJSON polygon features representing each headland.
-
+An object of the following form:
+```js
+{
+  polygons: {
+    // a GeoJSON feature collection of polygon features representing each headland
+  },
+  debug: [
+    // an array of GeoJSON points containing debug information (solely for development of this algorithm)
+  ]
+}
 
 ## License
 
-MIT
+MIT@Christoph Pahmeyer

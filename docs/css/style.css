@@ -1,0 +1,141 @@
+* {
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  color: rgb(38, 38, 38);
+  font-size: 12px;
+}
+
+#jsonWrapper{
+  position: absolute;
+  background: white;
+  outline: 2px solid;
+  margin: 20px;
+  padding: 20px;
+  width: 280px;
+}
+
+#jsonWrapper * {
+  margin-bottom: 10px;
+}
+
+#jsonWrapper div {
+  margin-bottom: 20px;
+}
+
+#jsonText {
+  margin-top: 10px;
+  min-height: 70px;
+  width: 100%;
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.slider {
+    margin-top: 10px;
+    -webkit-appearance: none;
+    width: 180px;
+    height: 8px;
+    border-radius: 5px;
+    background: white;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    box-shadow: 0 0 0 1.5pt rgba(0,0,0,0.1);
+    transition: opacity .2s;
+}
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1abc9c;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #1abc9c;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+}
+
+.marker {
+  /* visibility: hidden; */
+  background-color: rgba(49, 185, 67, 0.51);
+  text-align: center;
+  color: white;
+  line-height: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid green;
+  cursor: pointer;
+}
+
+.firstUncertain {
+  border: 5px solid orange;
+  background-color: rgba(200, 143, 46, 0.51);
+}
+
+.lastPoint {
+  border: 5px solid blue;
+  background-color: rgba(46, 108, 200, 0.51);
+}
+
+.button {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  color: #000000;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  background: #ffffff;
+  padding: 5px 10px 5px 10px;
+  border: solid #18191a 2px;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: rgba(3, 102, 214, 1);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.button:hover {
+  background-color: #f5f5f5;
+}

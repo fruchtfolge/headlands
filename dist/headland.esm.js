@@ -1,4 +1,4 @@
-import { cleanCoords, distance, bearing, polygon as polygon$1, lineString, rewind, buffer, difference, multiPolygon, area, destination, segmentEach, lineIntersect, getCoords, booleanWithin, point, lineOffset, lineToPolygon, featureCollection } from '@turf/turf';
+import { cleanCoords, distance, bearing, polygon as polygon$1, lineString, featureCollection, rewind, buffer, difference, multiPolygon, area, destination, segmentEach, lineIntersect, getCoords, booleanWithin, point, lineOffset, lineToPolygon } from '@turf/turf';
 import polygonClipping from 'polygon-clipping';
 
 /*
@@ -191,8 +191,8 @@ const headland = {
     }
     const lineStringFeatures = lineStrings.map(ls => lineString(ls));
     return {
-      lineStrings: lineStringFeatures,
-      holes: holes,
+      lineStrings: featureCollection(lineStringFeatures),
+      holes: featureCollection(holes),
       debug: debugData
     }
   },
@@ -213,7 +213,7 @@ const headland = {
     
     let polygons;
     try {
-      polygons = lineStrings.map(ls => {
+      polygons = lineStrings.features.map(ls => {
         // add additional point to start
         ls = extendLineString(ls, options.width);
         // and to the end of the linestring
@@ -237,8 +237,8 @@ const headland = {
       throw new Error('Failed to create headland polygons. This is likely to occur when the input polygon is too small: ' + e)
     }
     
-    if (holes && holes.length) {
-      holes.forEach(hole => {
+    if (holes && holes.features && holes.features.length) {
+      holes.features.forEach(hole => {
         let headland = buffer(hole, options.width / 1000);
         headland = difference(headland, hole);
         polygons.push(headland);
@@ -246,7 +246,7 @@ const headland = {
     }
     polygons = checkIntersections(polygons);
     return {
-      polygons,
+      polygons: featureCollection(polygons),
       debug
     }
   }

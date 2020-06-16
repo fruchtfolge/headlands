@@ -3,6 +3,11 @@ importScripts("./headland.min.js")
 
 self.addEventListener('message', e => {
   if (e.data.msg === 'start') return self.postMessage('started');
-  const result = headland.polygons(e.data.polygon, {maxAngle: e.data.maxAngle, minCoordDistance: e.data.minCoordDistance, width: e.data.width, debug: true })
+  const result = headland.polygons(e.data.polygon, {
+    maxAngle: e.data.maxAngle,
+    minCoordDistance: e.data.minCoordDistance,
+    width: e.data.width,
+    debug: true
+  })
   self.postMessage(result)
 }, false);
